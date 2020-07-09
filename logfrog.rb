@@ -2,16 +2,16 @@
 class Logfrog < Formula
   desc "cli utility to tail structured json logs from streams specially featuring stern and docker-compose with support for filtering and transformations of log entries"
   homepage "https://github.com/foomo/logfrog"
-  version "0.1.0"
+  version "0.2.2"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/foomo/logfrog/releases/download/0.1.0/logfrog_0.1.0_darwin_amd64.tar.gz"
-    sha256 "412932503f6d6d28725292e56b12541645f80866ae906359675f05daa11efef3"
+    url "https://github.com/foomo/logfrog/releases/download/v0.2.2/logfrog_0.2.2_darwin_amd64.tar.gz"
+    sha256 "33ee87ce6b00f19498a4e8927f679109d950623b5386d1f6b7a623b30bae7256"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/foomo/logfrog/releases/download/0.1.0/logfrog_0.1.0_linux_amd64.tar.gz"
-      sha256 "fc328e19b5b2081cd6a8c6b1a46f9e2471a9bb327ac0d002fb2c8274b770bb83"
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.2/logfrog_0.2.2_linux_amd64.tar.gz"
+      sha256 "80079d613a18a3beca65d30d1ad623c067e4251e57aa26669fdd76ada460ad7b"
     end
   end
 
