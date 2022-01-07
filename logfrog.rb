@@ -5,20 +5,36 @@
 class Logfrog < Formula
   desc "cli utility to tail structured json logs from streams specially featuring stern and docker-compose with support for filtering and transformations of log entries"
   homepage "https://github.com/foomo/logfrog"
-  version "0.2.3"
-  bottle :unneeded
+  version "0.2.4"
 
-  if OS.mac?
-    url "https://github.com/foomo/logfrog/releases/download/v0.2.3/logfrog_0.2.3_darwin_amd64.tar.gz"
-    sha256 "9b241e1c5ba02d1b2ac15dd7b5bbc701b54cbe01fe77915d1865d8f393a05934"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/foomo/logfrog/releases/download/v0.2.3/logfrog_0.2.3_linux_amd64.tar.gz"
-    sha256 "e165bb1689a623176e3034ce7aa6af35ba4b19462f5753848710387deb0d6958"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_darwin_amd64.tar.gz"
+      sha256 "fed930558317d36340b461b30145b3a560d8558ff6ff84837f7c954404074b65"
+
+      def install
+        bin.install "logfrog"
+      end
+    end
   end
 
-  def install
-    bin.install "logfrog"
+  on_linux do
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_linux_arm64.tar.gz"
+      sha256 "6757dd14ce0a497831e8f1d32b49cbc0459b9ef90664f6c67ef42a61ed9b1b6e"
+
+      def install
+        bin.install "logfrog"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_linux_amd64.tar.gz"
+      sha256 "b89e58bae9d1769e5b7233450692b9b3fb4a69c43169cf5e359c7ce72f36bcf3"
+
+      def install
+        bin.install "logfrog"
+      end
+    end
   end
 
   def caveats; <<~EOS
