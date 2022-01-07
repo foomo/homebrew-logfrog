@@ -5,12 +5,20 @@
 class Logfrog < Formula
   desc "cli utility to tail structured json logs from streams specially featuring stern and docker-compose with support for filtering and transformations of log entries"
   homepage "https://github.com/foomo/logfrog"
-  version "0.2.4"
+  version "0.2.5"
 
   on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.5/logfrog_0.2.5_darwin_arm64.tar.gz"
+      sha256 "4ccdf080226fa5231c18f554af1edbba29b94d167aea059aeaf02da89739ebe9"
+
+      def install
+        bin.install "logfrog"
+      end
+    end
     if Hardware::CPU.intel?
-      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_darwin_amd64.tar.gz"
-      sha256 "fed930558317d36340b461b30145b3a560d8558ff6ff84837f7c954404074b65"
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.5/logfrog_0.2.5_darwin_amd64.tar.gz"
+      sha256 "ff79dedba121021a504e719b51f67f97b77d3010fe5f3257b0a0fd47135dd97b"
 
       def install
         bin.install "logfrog"
@@ -20,16 +28,16 @@ class Logfrog < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_linux_arm64.tar.gz"
-      sha256 "6757dd14ce0a497831e8f1d32b49cbc0459b9ef90664f6c67ef42a61ed9b1b6e"
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.5/logfrog_0.2.5_linux_arm64.tar.gz"
+      sha256 "59eb43c31959e3a175756816a66aeea4a35ecfbeeb50b6b90324734891ce898d"
 
       def install
         bin.install "logfrog"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/foomo/logfrog/releases/download/v0.2.4/logfrog_0.2.4_linux_amd64.tar.gz"
-      sha256 "b89e58bae9d1769e5b7233450692b9b3fb4a69c43169cf5e359c7ce72f36bcf3"
+      url "https://github.com/foomo/logfrog/releases/download/v0.2.5/logfrog_0.2.5_linux_amd64.tar.gz"
+      sha256 "c52150678050580d9517c5e1e7162cea00b2a465c070c3959bbc14bd8bbea9b2"
 
       def install
         bin.install "logfrog"
